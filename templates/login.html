@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Login {% endblock title %}
+
+{% block content %}
+<main class="container col-8 col-md-6">
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="title">
+            <i class="fas fa-pencil-alt"></i> 
+            <h3>LOGIN</h3>
+        </div>
+        <div class="info">
+            <input type="text" name="username" placeholder="Username or Email">
+            <input type="password" name="password" placeholder="Password">
+        </div>
+        {% if form.errors %}
+        <div class="alert alert-error" style="list-style-type: none;">
+            <button type="button" class="close" data-dismiss="alert"></button>
+            {% for field in form %}
+                {% if field.errors %}
+                    <li class="mb-2">{{ field.errors|striptags }}</li>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        <button type="submit">Submit</button>
+    </form>
+</main>
+{% endblock content %}

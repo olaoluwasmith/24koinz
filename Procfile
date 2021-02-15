@@ -1,0 +1,1 @@
+web: gunicorn coinz.wsgi --log-file -

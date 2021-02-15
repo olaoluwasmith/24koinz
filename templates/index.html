@@ -1,0 +1,146 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+		{% block title %} 24koinz {% endblock %}
+	</title>
+    <link href= "https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css\bootstrap.min.css' %}" />
+	<link rel="stylesheet" href="{% static 'css\bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'css\style.css' %}">
+</head>
+
+<header id="header">
+    <nav id="nav-bar">
+        <div class="form-inline right">
+            <ul class="nav">
+                <li>
+                    <h2><a href="/" class="nav-link mt-2">24KOINZ</a></h2>
+                </li>
+                {% if user.is_authenticated %}
+                <li>
+                    <div class="dropdown ml-4">
+                        <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle tf" 
+                            id="dropdownMenuButton" data-toggle="dropdown" 
+                            aria-expanded="false" aria-haspopup="true"
+                            style="color: white;">
+                            {{ request.user }}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item btn btn-secondary btn-block tf" role="button" href="{% url 'dashboard' %}">Dashboard</a>
+                            <a class="dropdown-item btn btn-secondary btn-block tf mb-2" role="button" href="{% url 'edit-profile' %}">Edit Profile</a>
+                            <a class="dropdown-item btn btn-secondary btn-block tf mb-2" role="button" href="{% url 'logout' %}">Logout</a>
+                        </div>
+                    </div>
+                </li>
+                {%  endif %}
+            </ul>
+        </div> 
+    </nav>
+</header>
+
+<body>
+    {% block content %}
+    <main class="container">
+        <div class="row">
+            <div class="main-block col-md-6 mb-4">
+                <div class="left-part" style="color: white;">
+                    <i class="fas fa-graduation-cap"></i>
+                    {% if user.is_authenticated %}
+                    <h3>WELCOME TO 24KOINZ</h3>
+                    <p> 24koinz provides the best experience far above your imaginations.</p>
+                    {% else %}
+                    <h3>REGISTER TO 24KOINZ</h3>
+                    <p> 24koinz provides the best experience far above your imaginations.</p>
+                    
+                    <div class="btn-group">
+                        <a class="btn-item" href="{% url 'login' %}">Login</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if user.is_authenticated %}
+            {% else %}
+            <div class="col-md-6">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <div class="title">
+                        <i class="fas fa-pencil-alt"></i> 
+                        <h3>REGISTER HERE</h3>
+                    </div>
+                    <div class="info">
+                        <div class="input-group">
+                            Username: 
+                            {{form.username}}
+                        </div>
+                        <div class="input-group" id="emailAddress" type="email">
+                            Email: 
+                            {{form.email}}
+                        </div>
+                        <div class="input-group">
+                            Password: 
+                            {{form.password1}}
+                        </div>
+                        <div class="input-group">
+                            Confirm password: 
+                            {{form.password2}}
+                        </div>
+                        <div class="input-group">
+                            {{p_form.as_p}}
+                        </div>
+                        <!--
+                            <hr>
+                        <input class="fname" type="text" name="full_name" placeholder="Full Name">
+                        <input type="number" name="phone_number" placeholder="Phone Number">
+                        <input type="text" name="referral_id" placeholder="Referral ID (Optional)">
+                        -->
+                    </div>
+
+                    {% if form.errors %}
+                    <div class="alert alert-error" style="list-style-type: none;">
+                        <button type="button" class="close" data-dismiss="alert"></button>
+                        {% for field in form %}
+                            {% if field.errors %}
+                                <li class="mb-2">{{ field.errors|striptags }}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            {% endif %}
+        </div>
+    </main>
+    {% endblock content %}
+
+    <script src="https://kit.fontawesome.com/79bfb5ad6a.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/js/materialize.min.js"
+		integrity="" crossorigin="anonymous">
+	</script>
+	<script src="{% static 'js\jquery.min.js' %}"></script>
+	<script src="{% static 'js\jquery.waypoints.min.js' %}"></script>
+	<script src="{% static 'js\infinite.min.js' %}"></script>
+	<script src="{% static 'js\materialize.min.js' %}"></script>
+	<script src="{% static 'js\bootstrap.bundle.min.js' %}"></script>
+	<script src="{% static 'js\bootstrap.bundle.js' %}"></script>
+	<script src="{% static 'js\bootstrap.min.js' %}"></script>
+
+</body>
+
+<footer>
+    <div class="footer center">
+        <a href="https://wa.me/08123350738" target="_blank">Feedback</a>
+    </div>
+</footer>
+</html>

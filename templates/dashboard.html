@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Dashboard {% endblock title %}
+
+{% block content %}
+<main class="container">
+    <div>
+        <h3 class="mb-4" style="color: white;">DASHBOARD</h3>
+        {% if request.user == user %}
+        <div class="row mt-4" style="color: white;">
+            <div class="col-md-4">
+                <h5>Full Name</h5>
+                <p>{{ user.detail.full_name }}</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Phone Number</h5>
+                <p>{{ user.detail.phone_number }}</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Referral ID</h5>
+                <p>{{ user.detail.referral_id }}</p>
+            </div>
+        </div>
+
+        <h3 class="mt-4" style="color: white;">Details</h3>
+        <div class="row mt-2" style="color: white;">
+            <p class="col-md-6">Balance: {{ user.detail.balance }}</p>
+            <p class="col-md-6">Referral Bonus: {{ user.detail.referral_bonus }}</p>
+            <p class="col-md-6">Total Balance: {{ user.detail.total_balance }}</p>
+            <p class="col-md-6">Current Package: {{ user.detail.current_package }}</p>
+            <p class="col-md-6">Number of Referral: {{ user.detail.number_of_referral }}</p>
+            <p class="col-md-6">Status: {{ user.detail.status }}</p>
+            <p class="col-md-6">Vendor ID: {{ user.detail.vendor_id }}</p>
+            <p class="col-md-6">Coupon: {{ user.detail.coupon }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="dropdown ml-4 mr-4">
+        <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle tf" 
+            id="dropdownMenuButton" data-toggle="dropdown" 
+            aria-expanded="false" aria-haspopup="true"
+            style="color: white;">
+            List of Packages
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item btn btn-secondary btn-block tf" role="button" href="{% url 'basic-option' %}">Basic Option</a>
+            <a class="dropdown-item btn btn-secondary btn-block tf mb-2" role="button" href="{% url 'advanced-option' %}">Advanced Option</a>
+            <a class="dropdown-item btn btn-secondary btn-block tf mb-2" role="button" href="{% url 'advanced-option' %}">Premium Option</a>
+        </div>
+    </div>
+</main>
+{% endblock content %}

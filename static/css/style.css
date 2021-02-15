@@ -1,0 +1,164 @@
+html {
+	margin: 0;
+}
+
+body {
+	margin: 0;
+	font-family: "Exo 2", sans-serif;
+	background: url("../img/243.png") no-repeat center;
+	background-size: cover;
+}
+
+header {
+	position: fixed;
+	color: #f0fff0;
+	font-family: "Exo 2", sans-serif;
+	width: 100%;
+	background-image: url(https://www.executemarketing.co.uk/wp-content/uploads/2015/02/seminar-min-1920x600.jpg);
+	background-size: cover;
+	background-blend-mode: multiply;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	z-index: 1;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+a:visited {
+	color: inherit;
+}
+
+a:hover {
+	color: gray;
+}
+
+main {
+	font-family: "Exo 2", sans-serif;
+	padding: 150px 0 40px 0;
+}
+
+form,
+input,
+select {
+	padding: 0;
+	margin: 0;
+	outline: none;
+	font-family: Roboto, Arial, sans-serif;
+	font-size: 16px;
+	color: #eee;
+}
+
+.main-block {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	padding: 25px;
+	color: rgba(0, 0, 0, 0.5);
+}
+.left-part,
+form {
+	padding: 25px;
+}
+.left-part {
+	text-align: center;
+}
+.fa-graduation-cap {
+	font-size: 72px;
+}
+form {
+	background: rgba(0, 0, 0, 0.7);
+}
+.title {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+}
+.info {
+	display: flex;
+	flex-direction: column;
+}
+input,
+select {
+	padding: 5px;
+	margin-bottom: 25px;
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid #eee;
+}
+input::placeholder {
+	color: #eee;
+}
+b input::selection {
+	color: rgb(90, 81, 81);
+}
+
+.btn-item,
+button {
+	padding: 10px 5px;
+	margin-top: 20px;
+	border-radius: 5px;
+	border: none;
+	background: #26a9e0;
+	text-decoration: none;
+	font-size: 15px;
+	font-weight: 400;
+	color: #fff;
+}
+.btn-item {
+	display: inline-block;
+	margin: 20px 5px 0;
+}
+button {
+	width: 100%;
+}
+button:hover,
+.btn-item:hover {
+	background: #85d6de;
+}
+@media (min-width: 568px) {
+	html,
+	body {
+		height: 100%;
+	}
+	.main-block {
+		flex-direction: row;
+		height: calc(100% - 50px);
+	}
+	.left-part,
+	form {
+		flex: 1;
+		height: auto;
+	}
+}
+
+input {
+	height: 2em;
+	border: none;
+	transition: 0.1s;
+}
+
+input:hover {
+	border-bottom: 2px solid black;
+}
+
+option {
+	background: transparent;
+}
+
+.footer {
+	background-color: #353838;
+	padding: 2em;
+	color: #be5b19;
+}
+
+#nav-bar {
+	display: flex;
+	justify-content: center;
+	padding-top: 1em;
+}
